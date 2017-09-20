@@ -1,0 +1,75 @@
+- hosts: homeless_to_hearth
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+
+  environment:
+    SECRET_KEY: '{{ SECRET_KEY }}'
+    DATABASE_NAME: '{{ DATABASE_NAME }}'
+    DATABASE_USER: '{{ DATABASE_USER }}'
+    DATABASE_PASSWORD: '{{ DATABASE_PASSWORD }}'
+    DATABASE_HOST: '{{ DATABASE_HOST }}'
+    IAM_USER_SECRET_ACCESS_KEY: '{{ IAM_USER_SECRET_ACCESS_KEY }}'
+    IAM_USER_ACCESS_KEY_ID: '{{ IAM_USER_ACCESS_KEY_ID }}'
+
+  tasks:
+      - name: Update the Ubuntu system and services
+        apt: update_cache=yes
+
+      - name: Ugrade the Ubuntu system and services
+        apt: upgrade=full
+
+      - name: Install Basic Unix-level Services
+        apt: name={{ item }} state=latest
+        with_items:
+          - nginx
+          - python3
+          - python-pip
+          - build-essential
+          - python3-pip
+          - python3.4-venv
+          - git
+          - python-dev
+          - libpq-dev
+          - libtiff5-dev
+          - libjpeg8-dev
+          - zlib1g-dev
+          - libfreetype6-dev
+          - liblcms2-dev
+          - libwebp-dev
+          - tcl8.6-dev
+          - tk8.6-dev
+          - python-tk
+          - gunicorn
+
+      - name: Clone the Homeless to Health Github repository to the Home Directory
+        git: clone=yes repo=https://github.com/kurtrm/homeless_to_hearth.git dest=/home/ubuntu/homeless_to_hearth version=master
+
+      - name: Install app
+        pip: requirements=/home/ubuntu/homeless_to_hearth/requirements.txt
+
+      - name: Register the old default file
+        stat: path=/etc/nginx/sites-available/default.old
+        register: default_stat
+
+      - name: Rename old default file
+        command: mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.old
+        when: not default_stat.stat.exists
+
+      - name: Create a new default file for nginx
+        template: src=../templates/nginx_conf.jinja2 dest=/etc/nginx/sites-available/default
+
+      - name: Restart nginx service
+        service: name=nginx state=restarted
+
+      - name: Copy upstart script into /etc/init
+        template: src=../templates/upstart_config.jinja2 dest=/etc/init/homeless_to_hearth.conf
+
+      - name: Restart the django app upstart job
+        service: name=homeless_to_hearth state=restarted
+
+      - name: Django migrate
+        django_manage: command=migrate app_path=/home/ubuntu/homeless_to_hearth/searchlist
+
+      # - name: Django collectstatics
+      #   django_manage: command=collectstatic app_path=/home/ubuntu/homeless_to_hearth/searchlist
