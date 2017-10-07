@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name {{ EC2_PUBLIC_DNS }};
+    server_name {{ public_dns }};
     access_log /var/log/nginx/access.log;
 
     location / {

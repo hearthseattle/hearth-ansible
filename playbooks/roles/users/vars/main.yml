@@ -1,0 +1,14 @@
+---
+users:
+  - user: kmaurer
+    group: kmaurer
+    groups: sudo
+    home: /home/kmaurer
+    public_key: foo
+  - user: jwarren
+    group: jwarren
+    groups: sudo
+    home: /home/jwarren
+    public_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCznJGOVEdr2CEhOU4dtCIQ278uJKmjnwnoe9TS7vsP4jnJ7jBSCILhMAs4haBiIIzoxq2SwCc4AChZF05vPQUsVAxfPYMCu+rSLOIXIySlVs1y8ZtXnTi4+GV1KGzdShljMNW+mY/4Wiilu8MHrwMZVKzTIpKSfNvXxtHExOXpvLQYDRsXVsceCCFt94r5cwxkdM27Z8aLB0B4IwrCmZGLwjzY+oC34jQ5zEVEcb6pWgYydLGBTPd8igWFfFOhZqw7lpIvsjxA2y7OwXcC+mLUxFFDH3pCP+QN4AS4VXKVYbACG6qNP88OQ/OaB8vWgCNerv0wsrFv1OmGZTB+n3akvSfEBqLZBfJCrxKt8btLCNMGIn7zA0jrwUHwkWvejzvusHbIaZCcDrnZ+mIwkbIQhuSTQm7Y7gHOyWZL8KGkuUEXjmvsKFNSnfVjaYNey8E86L+CYA/C8lgIgYD+J5hyeaIq1CWc0w/ynszbp5Uh7BSlvo8CFM+B042nI4iIyrx0P9fxHPkfrBQ/QieN+ByY6AbVcdVeM5j9vOgZcITGlUvy0ikCfM3jt2TyZdYDWUi42oVIoSOeM87UDDZ+oXtop50zZF/xyVinBzwxAQGMdM0szZCLX8I4qRFbdZQ8ZRe1pweYxbaOIhMF1TBEUP9GH1Bvs7kVPkPSZAJjrGXl7w==
+
+...

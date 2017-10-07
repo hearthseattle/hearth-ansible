@@ -1,0 +1,10 @@
+---
+secret_key: foobar123lceaclkalkcea
+database_name: hearth
+database_user: hearthadmin
+database_password: foobar
+database_host: localhost
+aws_secret_access_key: foo
+aws_access_key_id: foo
+
+...

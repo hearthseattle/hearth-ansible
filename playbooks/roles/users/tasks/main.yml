@@ -1,0 +1,9 @@
+---
+- name: Create users
+  user: name={{ item.user }}
+        home={{ item.home }}
+        groups={{ item.groups }}
+  with_items: '{{ users }}'
+  notify:
+    - Add authorized keys
+...

@@ -1,0 +1,12 @@
+- hosts: default
+  become: yes
+  become_method: sudo
+  gather_facts: False
+  roles:
+    - base
+    - database
+    - webserver
+
+  vars:
+    environ: local
+    public_dns: localhost
