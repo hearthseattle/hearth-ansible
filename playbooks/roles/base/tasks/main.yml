@@ -1,0 +1,30 @@
+---
+####
+# The following is for bootstrapping Python 2.7 on Ubuntu Xenial
+####
+
+# - name: Bootstrap Python2.7
+#   raw: sudo apt-get update -qq && sudo apt-get install -qq python2.7
+
+# - name: Symlink Python2.7
+#   raw: sudo ln -s /usr/bin/python2.7 /usr/bin/python
+
+####
+
+- name: Create application user group
+  group: name={{ app_user }}
+         gid=1234 state=present
+
+- name: Create application user
+  user: name={{ app_user }}
+        group={{ app_user }}
+        home={{ app_user_home }}
+        groups=www-data
+        uid=1234
+
+- name: Ensure correct permissions for app user home
+  file: path={{ app_user_home }} state=directory
+        owner={{ app_user }} group={{ app_user }}
+        recurse=yes
+
+...

@@ -1,0 +1,7 @@
+---
+- name: Add authorized keys
+  authorized_key: user={{ item.user }} key={{ item.public_key }}
+  when: item.public_key is defined
+  with_items:
+    - '{{ users }}'
+...

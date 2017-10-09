@@ -1,0 +1,6 @@
+---
+app_user: hearthadmin
+app_user_home: /var/www/hearth
+app_dir: "{{ app_user_home }}/homeless_to_hearth/searchlist"
+
+...
