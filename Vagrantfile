@@ -14,6 +14,7 @@ Vagrant.configure(2) do |config|
   # https://docs.vagrantup.com.
 
   config.vm.box = 'ubuntu/trusty64'
+  config.vm.box_version = "20170810.0.0"
   # config.vm.box = 'ubuntu/xenial64'
 
   # Create a forwarded port mapping which allows access to a specific port

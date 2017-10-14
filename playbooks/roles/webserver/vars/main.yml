@@ -2,9 +2,9 @@
 secret_key: foobar123lceaclkalkcea
 database_name: hearth
 database_user: hearthadmin
-database_password: foobar
-database_host: localhost
-aws_secret_access_key: foo
-aws_access_key_id: foo
+database_password: '{{ DATABASE_PASSWORD }}'
+database_host: '{{ DATABASE_HOST }}'
+aws_secret_access_key: '{{ IAM_USER_SECRET_ACCESS_KEY }}'
+aws_access_key_id: '{{ IAM_USER_ACCESS_KEY_ID }}'
 
 ...

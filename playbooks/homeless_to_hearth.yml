@@ -10,12 +10,10 @@
   vars:
     environ: live
     public_dns: hearthseattle.org
-
-  environment:
-    SECRET_KEY: '{{ SECRET_KEY }}'
-    DATABASE_NAME: '{{ DATABASE_NAME }}'
-    DATABASE_USER: '{{ DATABASE_USER }}'
-    DATABASE_PASSWORD: '{{ DATABASE_PASSWORD }}'
-    DATABASE_HOST: '{{ DATABASE_HOST }}'
-    IAM_USER_SECRET_ACCESS_KEY: '{{ IAM_USER_SECRET_ACCESS_KEY }}'
-    IAM_USER_ACCESS_KEY_ID: '{{ IAM_USER_ACCESS_KEY_ID }}'
+    SECRET_KEY: ''
+    DATABASE_NAME: ''
+    DATABASE_USER: ''
+    DATABASE_PASSWORD: ''
+    DATABASE_HOST: ''
+    IAM_USER_SECRET_ACCESS_KEY: ''
+    IAM_USER_ACCESS_KEY_ID: ''
