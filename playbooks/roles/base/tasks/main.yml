@@ -11,6 +11,9 @@
 
 ####
 
+- name: Create app user home
+  file: path={{ app_user_home }} state=directory
+
 - name: Create application user group
   group: name={{ app_user }}
          gid=1234 state=present

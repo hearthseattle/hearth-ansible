@@ -31,6 +31,8 @@
   git: clone=yes repo=https://github.com/hearthseattle/hearth.git
        dest={{ app_user_home }}/homeless_to_hearth version=master
   when: environ != "local"
+  notify:
+    - Restart Application
 
 - name: Install packages
   pip: requirements={{ app_user_home }}/homeless_to_hearth/requirements.txt
@@ -65,6 +67,7 @@
   command: "{{ app_user_home }}/manage.sh migrate"
   become_user: "{{ app_user }}"
 
-# - name: Django collectstatics
-#   django_manage: command=collectstatic app_path=/home/ubuntu/homeless_to_hearth/searchlist
+- name: Django collectstatics
+  command: "{{ app_user_home }}/manage.sh collectstatic --noinput"
+  become_user: "{{ app_user }}"
 ...

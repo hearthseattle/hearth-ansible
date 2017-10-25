@@ -1,5 +1,5 @@
 ---
-secret_key: foobar123lceaclkalkcea
+secret_key: '{{ SECRET_KEY }}'
 database_name: hearth
 database_user: hearthadmin
 database_password: '{{ DATABASE_PASSWORD }}'
