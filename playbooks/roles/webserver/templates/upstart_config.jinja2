@@ -9,6 +9,7 @@ setuid hearthadmin
 setgid www-data
 
 env SECRET_KEY='{{ secret_key }}'
+env DEBUG='{{ DEBUG }}'
 env DATABASE_NAME='{{ database_name }}'
 {% if environ == "live" %}
 env DATABASE_HOST='{{ database_host }}'

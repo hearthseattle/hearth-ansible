@@ -15,6 +15,6 @@ export IAM_USER_ACCESS_KEY_ID="{{ aws_access_key_id }}"
 export IAM_USER_SECRET_ACCESS_KEY="{{ aws_secret_access_key }}"
 
 export SECRET_KEY="{{ secret_key }}"
-export DEBUG="True"
+export DEBUG={{ DEBUG }}
 
 {{ app_user_home }}/env/bin/python {{ app_dir }}/manage.py $@

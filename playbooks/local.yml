@@ -10,3 +10,4 @@
   vars:
     environ: local
     public_dns: localhost
+    DEBUG: "True"
