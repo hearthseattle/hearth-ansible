@@ -1,32 +1,31 @@
 ---
-- name: Update and upgrade the Ubuntu system and services
-  apt: update_cache=yes upgrade=full
-
-- name: Install Basic Unix-level Services
-  apt: name={{ item }} state=latest
+# PACKAGES
+- name: Install system packages
+  apt: name={{ item }} state=latest update_cache=yes
   with_items:
     - ansible
     - build-essential
     - git
-    - libfreetype6-dev
+    # - libfreetype6-dev
     - libjpeg8-dev
-    - liblcms2-dev
+    # - liblcms2-dev
     - libpq-dev
     - libtiff5-dev
     - libwebp-dev
     - nginx
-    - python-dev
-    - python-pip
-    - python-tk
+    # - python-dev
+    # - python-pip
+    # - python-tk
     - python3-dev
     - python3-pip
     - python3-setuptools
-    - python3.4-venv
-    - tcl8.6-dev
-    - tk8.6-dev
+    - python3.5-venv
+    # - tcl8.6-dev
+    # - tk8.6-dev
     - virtualenvwrapper
     - zlib1g-dev
 
+# APP
 - name: Clone the Homeless to Health Github repository to the Home Directory
   git: clone=yes repo=https://github.com/hearthseattle/hearth.git
        dest={{ app_user_home }}/homeless_to_hearth version=master
@@ -34,11 +33,12 @@
   notify:
     - Restart Application
 
-- name: Install packages
+- name: Install application packages
   pip: requirements={{ app_user_home }}/homeless_to_hearth/requirements.txt
        virtualenv={{ app_user_home }}/env virtualenv_python=/usr/bin/python3
   become_user: "{{ app_user }}"
 
+# NGINX
 - name: Remove default Nginx config
   file: path=/etc/nginx/sites-enabled/default state=absent
 
@@ -47,12 +47,15 @@
   notify:
     - Restart Nginx
 
-- name: Copy upstart script into /etc/init
-  template: src=upstart_config.jinja2
-            dest=/etc/init/hearth.conf
+# SYSTEMD
+- name: Place systemd Hearth service script
+  template: src=hearth.service.jinja2
+            dest=/etc/systemd/system/hearth.service
+            mode=0644 owner=root group=root
   notify:
     - Restart Application
 
+# DJANGO
 - name: Copy manage shell script
   template: src=manage.sh.jinja2
             dest={{ app_user_home }}/manage.sh
@@ -67,7 +70,7 @@
   command: "{{ app_user_home }}/manage.sh migrate"
   become_user: "{{ app_user }}"
 
-- name: Django collectstatics
+- name: Django collectstatic
   command: "{{ app_user_home }}/manage.sh collectstatic --noinput"
   become_user: "{{ app_user }}"
 ...
