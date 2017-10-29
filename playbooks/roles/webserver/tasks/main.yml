@@ -73,4 +73,10 @@
 - name: Django collectstatic
   command: "{{ app_user_home }}/manage.sh collectstatic --noinput"
   become_user: "{{ app_user }}"
+
+- name: Load development fixtures
+  command: "{{ app_user_home }}/manage.sh loaddata {{ app_user_home }}/homeless_to_hearth/fixtures.json"
+  become_user: "{{ app_user }}"
+  when: environ == "local"
+  ignore_errors: yes
 ...
