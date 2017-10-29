@@ -3,9 +3,10 @@
 ## Development and Local Provisioning
 
 ### Requirements:
-- Ansible >=2.3.2.0
-- [Vagrant](https://vagrantup.com) >=1.9.6
-- [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >=5.0.40
+- Python >=2.7.9, <3.x
+- Ansible == 2.3.x.x
+- [Vagrant](https://vagrantup.com) >=1.9.5, <2.0.0
+- [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >=5.0, <=5.1
 
 - Copy `vagrant_settings.example.yml` to `vagrant_settings.yml` in this 
   directory. Change the path in `vagrant_settings.yml` for `hearth_dir` from 
@@ -13,8 +14,14 @@
   machine. This repository and `hearth` work together to build the complete 
   application in the server.
 
-### Vagrant
+### A Note About OSX and System Python
+If you're running OSX, you have Python 2.7 installed by default. For the 
+purposes of development, you don't want to make changes to this installation. 
+It is recommended that you instead install the latest Python 2.7 on your 
+system and place it at the front of your PATH. There are many resources online 
+that walk through the process.
 
+### Vagrant
 Vagrant is a tool for building and managing virtual machine environments in a 
 single workflow.
 
@@ -42,7 +49,6 @@ You can access the website by visiting localhost:8001 in your browser.
 running
 
 ### Helpful Commands within the Vagrant box
-
 _Note: due to user permissions and environment variables, we use a shell 
 script (`/var/www/hearth/manage.sh`) to wrap the `manage.py` command. Trying 
 to invoke the `manage.py` executable directly will fail._
