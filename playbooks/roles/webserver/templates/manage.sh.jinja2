@@ -5,14 +5,9 @@ export DATABASE_NAME="{{ database_name }}"
 export DATABASE_USER="{{ database_user }}"
 export DATABASE_HOST="{{ database_host }}"
 export DATABASE_PASSWORD="{{ database_password }}"
-{% endif %}
-export TEST_DATABASE_NAME="test_{{ database_name }}"
-export TEST_DATABASE_USER="{{ database_user }}"
-export TEST_DATABASE_PASSWORD="{{ database_password }}"
-export TEST_DATABASE_HOST="{{ database_host }}"
-
 export IAM_USER_ACCESS_KEY_ID="{{ aws_access_key_id }}"
 export IAM_USER_SECRET_ACCESS_KEY="{{ aws_secret_access_key }}"
+{% endif %}
 
 export SECRET_KEY="{{ secret_key }}"
 export DEBUG={{ DEBUG }}

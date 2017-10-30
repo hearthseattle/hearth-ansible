@@ -13,9 +13,7 @@ Vagrant.configure(2) do |config|
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
-  config.vm.box = 'ubuntu/trusty64'
-  config.vm.box_version = "20170810.0.0"
-  # config.vm.box = 'ubuntu/xenial64'
+  config.vm.box = 'ubuntu/xenial64'
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -48,5 +46,5 @@ Vagrant.configure(2) do |config|
   end
 
   # Place profile with aliases
-  config.vm.provision 'file', source: 'profile', destination: '/home/vagrant/.profile'
+  config.vm.provision 'file', source: 'profile', destination: '/home/ubuntu/.profile'
 end

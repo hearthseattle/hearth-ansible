@@ -1,7 +1,7 @@
 - hosts: default
   become: yes
   become_method: sudo
-  gather_facts: False
+  gather_facts: no
   roles:
     - base
     - database
@@ -11,3 +11,8 @@
     environ: local
     public_dns: localhost
     DEBUG: "True"
+    SECRET_KEY: foobar
+    DATABASE_PASSWORD: none
+    DATABASE_HOST: none
+    IAM_USER_ACCESS_KEY_ID: none
+    IAM_USER_SECRET_ACCESS_KEY: none
