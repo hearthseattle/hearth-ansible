@@ -28,4 +28,9 @@
         owner={{ app_user }} group={{ app_user }}
         recurse=yes
 
+- name: Place local MOTD
+  copy: src=motd.local dest=/etc/motd
+        mode=0440 owner=root group=root
+  when: environ == 'local'
+
 ...
