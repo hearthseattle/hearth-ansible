@@ -12,7 +12,9 @@
     public_dns: localhost
     DEBUG: "True"
     SECRET_KEY: foobar
-    DATABASE_PASSWORD: none
-    DATABASE_HOST: none
-    IAM_USER_ACCESS_KEY_ID: none
-    IAM_USER_SECRET_ACCESS_KEY: none
+    DATABASE_PASSWORD: ''
+    DATABASE_HOST: ''
+    IAM_USER_ACCESS_KEY_ID: ''
+    IAM_USER_SECRET_ACCESS_KEY: ''
+    APP_EMAIL_USER: ''
+    APP_EMAIL_PASSWORD: ''

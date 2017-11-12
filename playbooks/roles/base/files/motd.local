@@ -1,0 +1,13 @@
+######################################################################
+                WELCOME TO VAGRANT FOR HEARTH
+######################################################################
+            - SOME HELPFUL COMMANDS AND ALIASES -
+
+manage - run a Django management command (eg `manage makemigrations`)
+shellp - start a Django shell
+logs - tail syslog
+reload - restart daemonized Gunicorn process
+runserver - run the Django local server on port 8080
+
+######################################################################
+######################################################################
